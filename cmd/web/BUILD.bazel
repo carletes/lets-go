@@ -1,10 +1,23 @@
+package(default_visibility = ["//cmd/web:__pkg__"])
+
 load("@io_bazel_rules_go//go:def.bzl", "go_binary")
+load("@io_bazel_rules_docker//go:image.bzl", "go_image")
 
 go_binary(
     name = "snippetbox",
     srcs = [
         "handlers.go",
         "main.go",
-        "//ui/html:templates",
     ],
+    data = ["//ui/html:templates"],
+    pure = "on",
+)
+
+# Not very usable at the moment: The working directory inside the
+# container is `/app`, but the HTML templates are under
+# `/app/cmd/web/snippetbox.runfiles/__main__` (and there's no way to
+# change that).
+go_image(
+    name = "snippetbox_image",
+    binary = ":snippetbox",
 )
