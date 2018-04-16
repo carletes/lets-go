@@ -1,0 +1,14 @@
+package(default_visibility = ["//cmd/web:__pkg__"])
+
+load("@io_bazel_rules_go//go:def.bzl", "go_embed_data")
+
+go_embed_data(
+    name = "templates",
+    srcs = [
+        "base.html",
+        "home.page.html",
+    ],
+    package = "main",
+    string = True,
+    var = "templates",
+)
