@@ -1,8 +1,9 @@
 package(default_visibility = ["//cmd/web:__pkg__"])
 
 filegroup(
-    name = "templates",
+    name = "ui",
     srcs = glob([
-        "*.html",
+        "html/*.html",
+        "static/**/*",
     ]),
 )

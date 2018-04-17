@@ -9,7 +9,7 @@ go_binary(
         "handlers.go",
         "main.go",
     ],
-    data = ["//ui/html:templates"],
+    data = ["//ui"],
     pure = "on",
 )
 
