@@ -5,18 +5,19 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"path/filepath"
 	"strconv"
 )
 
-func Home(w http.ResponseWriter, r *http.Request) {
+func (app *App) Home(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
 		http.NotFound(w, r)
 		return
 	}
 
 	files := []string{
-		"ui/html/base.html",
-		"ui/html/home.page.html",
+		filepath.Join(app.HTMLDir, "base.html"),
+		filepath.Join(app.HTMLDir, "home.page.html"),
 	}
 	ts, err := template.ParseFiles(files...)
 	if err != nil {
@@ -33,11 +34,11 @@ func Home(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func NewSnippet(w http.ResponseWriter, r *http.Request) {
+func (app *App) NewSnippet(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Display the new snippet form"))
 }
 
-func ShowSnippet(w http.ResponseWriter, r *http.Request) {
+func (app *App) ShowSnippet(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(r.URL.Query().Get("id"))
 	if err != nil || id < 1 {
 		http.NotFound(w, r)
