@@ -1,0 +1,15 @@
+package(default_visibility = ["//cmd/web:__pkg__"])
+
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "models",
+    srcs = [
+        "database.go",
+        "models.go",
+    ],
+    importpath = "github.com/carletes/lets-go/models",
+    deps = [
+        "@com_github_lib_pq//:go_default_library",
+    ],
+)

@@ -39,3 +39,9 @@ go_repository(
     importpath = "github.com/spf13/pflag",
     tag = "v1.0.1",
 )
+
+go_repository(
+    name = "com_github_lib_pq",
+    commit = "d34b9ff171c21ad295489235aec8b6626023cd04",
+    importpath = "github.com/lib/pq",
+)
