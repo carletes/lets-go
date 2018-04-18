@@ -14,18 +14,11 @@ func main() {
 	flag.Parse()
 
 	app := &App{
-		HTMLDir: *htmlDir,
+		HTMLDir:   *htmlDir,
+		StaticDir: *staticDir,
 	}
 
-	mux := http.NewServeMux()
-	mux.HandleFunc("/", app.Home)
-	mux.HandleFunc("/snippet", app.ShowSnippet)
-	mux.HandleFunc("/snippet/new", app.NewSnippet)
-
-	fileServer := http.FileServer(http.Dir(*staticDir))
-	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
-
 	log.Printf("Starting server on %s", *addr)
-	err := http.ListenAndServe(*addr, mux)
+	err := http.ListenAndServe(*addr, app.Routes())
 	log.Fatal(err)
 }
