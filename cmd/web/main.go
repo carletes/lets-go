@@ -1,9 +1,10 @@
 package main
 
 import (
-	"flag"
 	"log"
 	"net/http"
+
+	flag "github.com/spf13/pflag"
 )
 
 func main() {

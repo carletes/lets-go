@@ -12,6 +12,9 @@ go_binary(
     ],
     data = ["//ui"],
     pure = "on",
+    deps = [
+        "@com_github_spf13_pflag//:go_default_library",
+    ],
 )
 
 # Not very usable at the moment: The working directory inside the
