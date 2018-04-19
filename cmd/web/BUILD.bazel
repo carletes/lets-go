@@ -25,6 +25,8 @@ go_binary(
 # `/app/cmd/web/snippetbox.runfiles/__main__` (and there's no way to
 # change that).
 go_image(
-    name = "snippetbox_image",
+    name = "snippetbox-image",
     binary = ":snippetbox",
+    goarch = "amd64",
+    goos = "linux",
 )
