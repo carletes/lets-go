@@ -17,6 +17,7 @@ go_binary(
     pure = "on",
     deps = [
         "//pkg/models",
+        "@com_github_bmizerany_pat//:go_default_library",
         "@com_github_lib_pq//:go_default_library",
         "@com_github_spf13_pflag//:go_default_library",
     ],

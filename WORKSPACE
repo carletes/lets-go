@@ -35,6 +35,12 @@ go_image_repositories()
 # Go dependencies.
 
 go_repository(
+    name = "com_github_bmizerany_pat",
+    commit = "6226ea591a40176dd3ff9cd8eff81ed6ca721a00",
+    importpath = "github.com/bmizerany/pat",
+)
+
+go_repository(
     name = "com_github_spf13_pflag",
     importpath = "github.com/spf13/pflag",
     tag = "v1.0.1",
